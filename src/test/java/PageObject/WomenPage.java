@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Wait;
 public class WomenPage {
     WebDriver driver;
 
-    static String blouseXpath = "/html/body/div/div[2]/div/div[3]/div[2]/ul/li[2]/div/div[1]/div/a[1]/img";
+    static String blouseXpath = "//img[@title=\"Blouse\"]";
     static String addToCardButtonXpath = "//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]";
     static String continueShoppingButtonXpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span";
 
