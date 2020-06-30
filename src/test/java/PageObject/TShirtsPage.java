@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
 public class TShirtsPage {
     WebDriver driver;
 
-    static String tshirtXpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[1]/img";
-    static String addToCardButtonXpath = "//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]";
-    static String continueShoppingButtonXpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span";
+    static String tshirtXpath = "//img[@title=\"Faded Short Sleeve T-shirts\"]";
+    static String addToCardButtonXpath = "//a[@data-id-product=\"1\"][@title=\"Add to cart\"]";
+    static String continueShoppingButtonXpath = "//span[@title=\"Continue shopping\"]";
 
     By TShirt = By.xpath(tshirtXpath);
     By AddTShirtButton = By.xpath(addToCardButtonXpath);

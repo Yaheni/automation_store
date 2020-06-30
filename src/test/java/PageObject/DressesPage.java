@@ -15,9 +15,9 @@ public class DressesPage {
         this.driver = driver;
     }
 
-    static String dressXpath = "//*[@id=\"center_column\"]/ul/li[2]/div/div[1]/div/a[1]/img";
-    static String addToCardButtonXpath = "//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]";
-    static String continueShoppingButtonXpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span";
+    static String dressXpath = "//li[2]//img[@title=\"Printed Dress\"]";
+    static String addToCardButtonXpath = "//a[@data-id-product=\"4\"][@title=\"Add to cart\"]";
+    static String continueShoppingButtonXpath = "//span[@title=\"Continue shopping\"]";
 
     By Dress = By.xpath(dressXpath);
     By AddDressButton = By.xpath(addToCardButtonXpath);

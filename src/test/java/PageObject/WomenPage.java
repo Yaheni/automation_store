@@ -14,8 +14,8 @@ public class WomenPage {
     WebDriver driver;
 
     static String blouseXpath = "//img[@title=\"Blouse\"]";
-    static String addToCardButtonXpath = "//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]";
-    static String continueShoppingButtonXpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span";
+    static String addToCardButtonXpath = "//a[@data-id-product=\"2\"][@title=\"Add to cart\"]";
+    static String continueShoppingButtonXpath = "//span[@title=\"Continue shopping\"]";
 
     By Blouse = By.xpath(blouseXpath);
     By AddBlouseButton = By.xpath(addToCardButtonXpath);

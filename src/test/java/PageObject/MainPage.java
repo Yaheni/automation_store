@@ -16,18 +16,18 @@ public class MainPage {
     }
 
     static String baseURL = "http://automationpractice.com/index.php";
-    static String womenButtonPath = "//*[@id=\"block_top_menu\"]/ul/li[1]";
+    static String womenButtonPath = "//li//a[@title=\"Women\"]";
     static String dressesButtonPath = "//*[@id=\"block_top_menu\"]/ul/li[2]/a";
-    static String tshirtsButtonPath = "//*[@id=\"block_top_menu\"]/ul/li[3]/a";
-    static String cartButtonPath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a";
+    static String tshirtsButtonPath = "//li[3]//a[@title=\"T-shirts\"]";
+    static String cartButtonPath = "//a[@title=\"View my shopping cart\"]";
     static String amountOfGoodsTextXpath = "//*[@id=\"center_column\"]/h1/span[2]";
     static String firstThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Blouse\"]";
     static String secondThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Printed Dress\"]";
     static String thirdThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Faded Short Sleeve T-shirts\"]";
-    static String deleteButtonPath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt[1]/span/a";
+    static String deleteButtonPath = "//dt[@class=\"first_item\"]//a[@class='ajax_cart_block_remove_link']";
     static String searchInputPath = "//*[@id=\"search_query_top\"]";
     static String searchButtonPath = "//*[@id=\"searchbox\"]/button";
-    static String foundedThingPath = "//*[@id=\"center_column\"]/ul/li/div/div[2]/h5/a";
+    static String foundedThingPath = "//div[@id=\"center_column\"]//a[@class=\"product-name\"]";
 
     By WomenButton = By.xpath(womenButtonPath);
     By DressesButton = By.xpath(dressesButtonPath);
