@@ -38,80 +38,45 @@ public class Tests {
 
     @Test
     @Order(2)
-    public void GoToWomenPage() {
+    public void WomanPageTests() {
         mainPage.goToWomenCategory();
-    }
-
-    @Test
-    @Order(3)
-    public void CheckAmountOfGoodsInWomenCategory(){
         mainPage.checkAmountOfGoodsInCategory("There are 7 products.");
-    }
-
-    @Test
-    @Order(4)
-    public void AddBlouseToCart() {
         womenPage.addBlouseToCard();
     }
 
+
     @Test
-    @Order(5)
-    public void GoToDressesCategory() {
+    @Order(3)
+    public void DressesPageTests() {
         mainPage.goToDressesCategory();
-    }
-
-    @Test
-    @Order(6)
-    public void CheckAmountOfGoodsInDressesCategory() {
         mainPage.checkAmountOfGoodsInCategory("There are 5 products.");
-    }
-
-    @Test
-    @Order(7)
-    public void AddDressToCart() {
         dressesPage.addDressToCart();
     }
 
+
     @Test
-    @Order(8)
-    public void GoToTshirtsCategory() {
+    @Order(4)
+    public void TshirtsPageTests() {
         mainPage.goToTshirtsCategory();
-    }
-
-    @Test
-    @Order(9)
-    public void CheckAmountOfGoodsInTShirtsCategory() {
         mainPage.checkAmountOfGoodsInCategory("There is 1 product.");
-    }
-
-    @Test
-    @Order(10)
-    public void AddTShirtToCart() {
         tShirtsPage.addTShirtToCart();
     }
 
+
     @Test
-    @Order(11)
-    public void OpenCart() {
+    @Order(5)
+    public void CheckCartAndDeleteItem() {
         mainPage.openCart();
-    }
-
-    @Test
-    @Order(12)
-    public void CheckCart() {
         mainPage.checkCart("Blouse", "Printed Dress", "Faded Short Sleeve T-shirts");
+        mainPage.deleteItemFromCart();
+
     }
 
-    @Test
-    @Order(13)
-    public void DeletePrece() {
-        mainPage.deletePreceFromCart();
-    }
 
     @Test
-    @Order(14)
+    @Order(6)
     public void FindThing() {
-        mainPage.findThing("Blouse");
+        mainPage.findProduct("Blouse");
     }
 
 

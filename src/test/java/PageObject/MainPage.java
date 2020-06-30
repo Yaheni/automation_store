@@ -87,12 +87,12 @@ public class MainPage {
         Assertions.assertEquals(ThirdThingText, thirdThingName);
     }
 
-    public void deletePreceFromCart() {
+    public void deleteItemFromCart() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(DeleteButton).click();
     }
 
-    public void findThing(String FoundedThingText) {
+    public void findProduct(String FoundedThingText) {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(SearchInput).sendKeys(FoundedThingText);
         driver.findElement(SearchButton).click();
