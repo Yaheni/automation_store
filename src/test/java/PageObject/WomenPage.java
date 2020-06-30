@@ -2,11 +2,8 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -22,7 +19,7 @@ public class WomenPage {
 
     By Blouse = By.xpath(blouseXpath);
     By AddBlouseButton = By.xpath(addToCardButtonXpath);
-    By continueShoppingButton = By.xpath(continueShoppingButtonXpath);
+    By ContinueShoppingButton = By.xpath(continueShoppingButtonXpath);
 
 
     public WomenPage(WebDriver driver) {
@@ -35,24 +32,15 @@ public class WomenPage {
                 .pollingEvery(3, TimeUnit.SECONDS)
                 .ignoring(Exception.class);
 
-
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         Actions actions = new Actions(driver);
         WebElement btn = driver.findElement(Blouse);
         actions.moveToElement(btn);
         actions.perform();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-
-        WebElement addBtn = (WebElement) wait.until(new Function<WebDriver, WebElement>()
-        {
-            public WebElement apply(WebDriver driver) {
-               return driver.findElement(AddBlouseButton);
-            }
-        });
-
+        WebElement addBtn = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> driver.findElement(AddBlouseButton));
         addBtn.click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(continueShoppingButton).click();
+        WebElement continueShopping = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> driver.findElement(ContinueShoppingButton));
+        continueShopping.click();
     }
 
 }
