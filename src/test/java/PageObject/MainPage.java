@@ -1,12 +1,11 @@
 package PageObject;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import java.util.concurrent.TimeUnit;
-
+import org.junit.jupiter.api.Assertions;
 
 public class MainPage {
 
@@ -66,7 +65,7 @@ public class MainPage {
     public void checkAmountOfGoodsInCategory(String expectedAmount) {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         String ActualAmount = driver.findElement(AmountOfGoods).getText();
-        Assert.assertEquals(ActualAmount, expectedAmount);
+        Assertions.assertEquals(ActualAmount, expectedAmount);
     }
 
 
@@ -83,9 +82,9 @@ public class MainPage {
         String FirstThingText = driver.findElement(FirstThing).getAttribute("title");
         String SecondThingText = driver.findElement(SecondThing).getAttribute("title");
         String ThirdThingText = driver.findElement(ThirdThing).getAttribute("title");
-        Assert.assertEquals(FirstThingText, firstThingName);
-        Assert.assertEquals(SecondThingText, secondThingName);
-        Assert.assertEquals(ThirdThingText, thirdThingName);
+        Assertions.assertEquals(FirstThingText, firstThingName);
+        Assertions.assertEquals(SecondThingText, secondThingName);
+        Assertions.assertEquals(ThirdThingText, thirdThingName);
     }
 
     public void deletePreceFromCart() {
@@ -99,7 +98,7 @@ public class MainPage {
         driver.findElement(SearchButton).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         String ActualThingText = driver.findElement(FoundedThing).getText();
-        Assert.assertEquals(ActualThingText, FoundedThingText);
+        Assertions.assertEquals(ActualThingText, FoundedThingText);
     }
 
 }

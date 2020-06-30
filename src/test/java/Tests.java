@@ -50,7 +50,7 @@ public class Tests {
 
     @Test
     @Order(4)
-    public void AddBlouseToCar() {
+    public void AddBlouseToCart() {
         womenPage.addBlouseToCard();
     }
 
