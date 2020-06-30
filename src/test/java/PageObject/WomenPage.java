@@ -32,10 +32,9 @@ public class WomenPage {
                 .pollingEvery(3, TimeUnit.SECONDS)
                 .ignoring(Exception.class);
 
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         Actions actions = new Actions(driver);
-        WebElement btn = driver.findElement(Blouse);
-        actions.moveToElement(btn);
+        WebElement BlouseCard = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> driver.findElement(Blouse));
+        actions.moveToElement(BlouseCard);
         actions.perform();
         WebElement addBtn = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> driver.findElement(AddBlouseButton));
         addBtn.click();
