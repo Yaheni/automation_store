@@ -2,9 +2,15 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 
 public class WomenPage {
@@ -24,15 +30,29 @@ public class WomenPage {
     }
 
     public void addBlouseToCard() {
+        Wait wait = new FluentWait(driver)
+                .withTimeout(10, TimeUnit.SECONDS)
+                .pollingEvery(3, TimeUnit.SECONDS)
+                .ignoring(Exception.class);
+
+
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         Actions actions = new Actions(driver);
         WebElement btn = driver.findElement(Blouse);
         actions.moveToElement(btn);
         actions.perform();
-        driver.findElement(AddBlouseButton).click();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        WebElement addBtn = (WebElement) wait.until(new Function<WebDriver, WebElement>()
+        {
+            public WebElement apply(WebDriver driver) {
+               return driver.findElement(AddBlouseButton);
+            }
+        });
+
+        addBtn.click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(continueShoppingButton).click();
     }
-
 
 }
