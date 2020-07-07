@@ -31,7 +31,6 @@ public class DressesPage {
         actions.moveToElement(btn);
         actions.perform();
         driver.findElement(AddDressButton).click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(continueShoppingButton).click();
     }
 

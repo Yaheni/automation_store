@@ -1,5 +1,4 @@
 package PageObject;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +10,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 
 public class WomenPage {
+
     WebDriver driver;
 
     static String blouseXpath = "//img[@title=\"Blouse\"]";

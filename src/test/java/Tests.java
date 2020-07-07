@@ -1,34 +1,19 @@
+import Config.Setup;
 import PageObject.DressesPage;
 import PageObject.MainPage;
 import PageObject.TShirtsPage;
 import PageObject.WomenPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class Tests {
 
-    public static WebDriver driver;
+public class Tests extends Setup {
 
     MainPage mainPage = new MainPage(driver);
     WomenPage womenPage = new WomenPage(driver);
     DressesPage dressesPage = new DressesPage(driver);
     TShirtsPage tShirtsPage = new TShirtsPage(driver);
 
-
-    @BeforeAll
-    public static void SetUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    @AfterAll
-    public static void End() {
-        driver.close();
-    }
 
     @Test
     @Order(1)

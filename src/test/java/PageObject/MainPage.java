@@ -13,6 +13,7 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+
     }
 
     static String baseURL = "http://automationpractice.com/index.php";
@@ -28,6 +29,7 @@ public class MainPage {
     static String searchInputPath = "//*[@id=\"search_query_top\"]";
     static String searchButtonPath = "//*[@id=\"searchbox\"]/button";
     static String foundedThingPath = "//div[@id=\"center_column\"]//a[@class=\"product-name\"]";
+    static String amountCartProductsPath = "//a//span[@class=\"ajax_cart_quantity\"]";
 
     By WomenButton = By.xpath(womenButtonPath);
     By DressesButton = By.xpath(dressesButtonPath);
@@ -41,6 +43,7 @@ public class MainPage {
     By SearchInput = By.xpath(searchInputPath);
     By SearchButton = By.xpath(searchButtonPath);
     By FoundedThing = By.xpath(foundedThingPath);
+    By amountCartProducts = By.xpath(amountCartProductsPath);
 
 
     public void visit() {
@@ -48,8 +51,8 @@ public class MainPage {
     }
 
     public void goToWomenCategory(){
-        driver.findElement(WomenButton).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.findElement(WomenButton).click();
     }
 
     public void goToDressesCategory(){
@@ -87,18 +90,43 @@ public class MainPage {
         Assertions.assertEquals(ThirdThingText, thirdThingName);
     }
 
+    public void checkFirstItemInCart(String itemName) {
+        String oneThingText = driver.findElement(FirstThing).getAttribute("title");
+        Assertions.assertEquals(oneThingText, itemName);
+    }
+
+    public void checkSecondItemInCart(String itemName) {
+        String oneThingText = driver.findElement(SecondThing).getAttribute("title");
+        Assertions.assertEquals(oneThingText, itemName);
+    }
+
+    public void checkThirdItemInCart(String itemName) {
+        String oneThingText = driver.findElement(ThirdThing).getAttribute("title");
+        Assertions.assertEquals(oneThingText, itemName);
+    }
+
     public void deleteItemFromCart() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(DeleteButton).click();
+    }
+
+    public void checkDeletedItem() {
+
+        String amount =  driver.findElement(amountCartProducts).getText();
+        Assertions.assertEquals("2", amount);
     }
 
     public void findProduct(String FoundedThingText) {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(SearchInput).sendKeys(FoundedThingText);
         driver.findElement(SearchButton).click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         String ActualThingText = driver.findElement(FoundedThing).getText();
         Assertions.assertEquals(ActualThingText, FoundedThingText);
+    }
+
+    public void checkFoundedProduct(String foundedProduct) {
+        String ActualThingText = driver.findElement(FoundedThing).getText();
+        Assertions.assertEquals(ActualThingText, foundedProduct);
     }
 
 }
