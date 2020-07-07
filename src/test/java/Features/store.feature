@@ -1,19 +1,20 @@
-# language: ru
+# language: en
 @store
-Функция: Adding products to cart and deleting
 
-  Сценарий: Successful adding product in the cart and deleting one product after that
+Feature: Adding products to cart and deleting
 
-    Дано  user entered in the "Women" category
-    Когда user clicks adding blouse to cart
-    Тогда blouse is added to the cart
-    Когда user entered in the "Dresses" category
-    Когда user clicks adding dress to cart
-    Тогда dress is added to the cart
-    Когда user entered in the "TShirts" category
-    Когда user clicks adding tshirt to cart
-    Тогда tshirt is added to the cart
-    Когда user deleted product from the cart
-    Когда user is finding deleted item
-    Тогда deleted product disappeared
-    Тогда deleted product is founded in the store
+  Scenario: Successful adding product in the cart and deleting one product after that
+
+    Given  user entered in the "Women" category
+    When user clicks adding blouse to cart
+    Then blouse is added to the cart
+    When user entered in the "Dresses" category
+    When user clicks adding dress to cart
+    Then dress is added to the cart
+    When user entered in the "TShirts" category
+    When user clicks adding tshirt to cart
+    Then tshirt is added to the cart
+    When user deleted product from the cart
+    When user is finding deleted item
+    Then deleted product disappeared
+    Then deleted product is founded in the store
