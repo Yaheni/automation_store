@@ -10,5 +10,6 @@ import org.junit.runner.RunWith;
         tags = "@store",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
+
 public class CucumberTests {
 }
