@@ -1,4 +1,4 @@
-package Features;
+package Features.Steps;
 
 import PageObject.DressesPage;
 import PageObject.TShirtsPage;
