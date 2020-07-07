@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/Features",
         glue = "Features",
-        tags = "@women",
+        tags = "@store",
         snippets = SnippetType.CAMELCASE
 )
 public class CucumberTests {
