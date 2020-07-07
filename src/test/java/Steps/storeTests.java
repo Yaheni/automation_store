@@ -1,10 +1,10 @@
-package Features.Steps;
+package Steps;
 
 import PageObject.DressesPage;
-import PageObject.TShirtsPage;
-import cucumber.api.java.ru.*;
 import PageObject.MainPage;
+import PageObject.TShirtsPage;
 import PageObject.WomenPage;
+import io.cucumber.java.ru.*;
 
 
 public class storeTests extends SetupTests {
