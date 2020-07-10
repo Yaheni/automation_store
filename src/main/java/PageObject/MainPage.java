@@ -1,132 +1,84 @@
 package PageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import java.util.concurrent.TimeUnit;
-import org.junit.jupiter.api.Assertions;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+
+
 
 public class MainPage {
 
-    WebDriver driver;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-
-    }
-
     static String baseURL = "http://automationpractice.com/index.php";
-    static String womenButtonPath = "//li//a[@title=\"Women\"]";
-    static String dressesButtonPath = "//*[@id=\"block_top_menu\"]/ul/li[2]/a";
-    static String tshirtsButtonPath = "//li[3]//a[@title=\"T-shirts\"]";
-    static String cartButtonPath = "//a[@title=\"View my shopping cart\"]";
-    static String amountOfGoodsTextXpath = "//*[@id=\"center_column\"]/h1/span[2]";
-    static String firstThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Blouse\"]";
-    static String secondThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Printed Dress\"]";
-    static String thirdThingPath = "//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Faded Short Sleeve T-shirts\"]";
-    static String deleteButtonPath = "//dt[@class=\"first_item\"]//a[@class='ajax_cart_block_remove_link']";
-    static String searchInputPath = "//*[@id=\"search_query_top\"]";
-    static String searchButtonPath = "//*[@id=\"searchbox\"]/button";
-    static String foundedThingPath = "//div[@id=\"center_column\"]//a[@class=\"product-name\"]";
-    static String amountCartProductsPath = "//a//span[@class=\"ajax_cart_quantity\"]";
 
-    By WomenButton = By.xpath(womenButtonPath);
-    By DressesButton = By.xpath(dressesButtonPath);
-    By TshirtsButton = By.xpath(tshirtsButtonPath);
-    By CartButton = By.xpath(cartButtonPath);
-    By AmountOfGoods = By.xpath(amountOfGoodsTextXpath);
-    By FirstThing = By.xpath(firstThingPath);
-    By SecondThing = By.xpath(secondThingPath);
-    By ThirdThing = By.xpath(thirdThingPath);
-    By DeleteButton = By.xpath(deleteButtonPath);
-    By SearchInput = By.xpath(searchInputPath);
-    By SearchButton = By.xpath(searchButtonPath);
-    By FoundedThing = By.xpath(foundedThingPath);
-    By amountCartProducts = By.xpath(amountCartProductsPath);
-
-
-    public void visit() {
-        driver.get(baseURL);
-    }
+    private SelenideElement WomenButton = Selenide.$x("//li//a[@title=\"Women\"]");
+    private SelenideElement DressesButton = Selenide.$x("//*[@id=\"block_top_menu\"]/ul/li[2]/a");
+    private SelenideElement TshirtsButton = Selenide.$x("//li[3]//a[@title=\"T-shirts\"]");
+    private SelenideElement CartButton = Selenide.$x("//a[@title=\"View my shopping cart\"]");
+    private SelenideElement AmountOfGoods = Selenide.$x("//*[@id=\"center_column\"]/h1/span[2]");
+    private SelenideElement FirstThing = Selenide.$x("//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Blouse\"]");
+    private SelenideElement SecondThing = Selenide.$x("//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Printed Dress\"]");
+    private SelenideElement ThirdThing = Selenide.$x("//*[@id=\"header\"]//a[@class=\"cart_block_product_name\"][@title=\"Faded Short Sleeve T-shirts\"]");
+    private SelenideElement DeleteButton = Selenide.$x("//dt[@class=\"first_item\"]//a[@class='ajax_cart_block_remove_link']");
+    private SelenideElement SearchButton = Selenide.$x("//*[@id=\"searchbox\"]/button");
+    private SelenideElement SearchInput = Selenide.$x("//*[@id=\"search_query_top\"]");
+    private SelenideElement FoundedThing = Selenide.$x("//div[@id=\"center_column\"]//a[@class=\"product-name\"]");
+    private SelenideElement AmountCartProducts = Selenide.$x("//a//span[@class=\"ajax_cart_quantity\"]");
 
     public void goToWomenCategory(){
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(WomenButton).click();
+        Selenide.open(baseURL);
+        WomenButton.click();
     }
 
     public void goToDressesCategory(){
-        driver.findElement(DressesButton).click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        DressesButton.click();
     }
 
     public void goToTshirtsCategory(){
-        driver.findElement(TshirtsButton).click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        TshirtsButton.click();
     }
 
     public void checkAmountOfGoodsInCategory(String expectedAmount) {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        String ActualAmount = driver.findElement(AmountOfGoods).getText();
-        Assertions.assertEquals(ActualAmount, expectedAmount);
+        AmountOfGoods.shouldHave(Condition.text(expectedAmount));
     }
 
 
     public void openCart() {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        Actions actions = new Actions(driver);
-        WebElement Cart = driver.findElement(CartButton);
-        actions.moveToElement(Cart);
-        actions.perform();
+        CartButton.shouldBe(Condition.visible).scrollTo().hover();
     }
 
     public void checkCart(String firstThingName, String secondThingName, String thirdThingName) {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        String FirstThingText = driver.findElement(FirstThing).getAttribute("title");
-        String SecondThingText = driver.findElement(SecondThing).getAttribute("title");
-        String ThirdThingText = driver.findElement(ThirdThing).getAttribute("title");
-        Assertions.assertEquals(FirstThingText, firstThingName);
-        Assertions.assertEquals(SecondThingText, secondThingName);
-        Assertions.assertEquals(ThirdThingText, thirdThingName);
+        FirstThing.shouldHave(Condition.text(firstThingName));
+        SecondThing.shouldHave(Condition.text(secondThingName));
+        ThirdThing.shouldHave(Condition.text(thirdThingName));
     }
 
     public void checkFirstItemInCart(String itemName) {
-        String oneThingText = driver.findElement(FirstThing).getAttribute("title");
-        Assertions.assertEquals(oneThingText, itemName);
+        FirstThing.shouldHave(Condition.text(itemName));
     }
 
     public void checkSecondItemInCart(String itemName) {
-        String oneThingText = driver.findElement(SecondThing).getAttribute("title");
-        Assertions.assertEquals(oneThingText, itemName);
+       SecondThing.shouldHave(Condition.text(itemName));
     }
 
     public void checkThirdItemInCart(String itemName) {
-        String oneThingText = driver.findElement(ThirdThing).getAttribute("title");
-        Assertions.assertEquals(oneThingText, itemName);
+        ThirdThing.shouldHave(Condition.attribute("title", itemName));
     }
 
     public void deleteItemFromCart() {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(DeleteButton).click();
+        DeleteButton.click();
     }
 
     public void checkDeletedItem() {
-
-        String amount =  driver.findElement(amountCartProducts).getText();
-        Assertions.assertEquals("2", amount);
+        AmountCartProducts.shouldHave(Condition.text("2"));
     }
 
     public void findProduct(String FoundedThingText) {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(SearchInput).sendKeys(FoundedThingText);
-        driver.findElement(SearchButton).click();
-        String ActualThingText = driver.findElement(FoundedThing).getText();
-        Assertions.assertEquals(ActualThingText, FoundedThingText);
+        SearchInput.setValue(FoundedThingText).pressEnter();
+        FoundedThing.shouldHave(Condition.text(FoundedThingText));
     }
 
     public void checkFoundedProduct(String foundedProduct) {
-        String ActualThingText = driver.findElement(FoundedThing).getText();
-        Assertions.assertEquals(ActualThingText, foundedProduct);
+        FoundedThing.shouldHave(Condition.text(foundedProduct));
     }
 
 }

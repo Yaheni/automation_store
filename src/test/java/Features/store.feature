@@ -5,7 +5,7 @@ Feature: Adding products to cart and deleting
 
   Scenario: Successful adding product in the cart and deleting one product after that
 
-    Given  user entered in the "Women" category
+    Given user entered in the "Women" category
     When user clicks adding blouse to cart
     Then blouse is added to the cart
     When user entered in the "Dresses" category

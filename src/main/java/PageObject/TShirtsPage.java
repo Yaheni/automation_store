@@ -1,36 +1,21 @@
 package PageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import java.util.concurrent.TimeUnit;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 
 
 public class TShirtsPage {
-    WebDriver driver;
 
-    static String tshirtXpath = "//img[@title=\"Faded Short Sleeve T-shirts\"]";
-    static String addToCardButtonXpath = "//a[@data-id-product=\"1\"][@title=\"Add to cart\"]";
-    static String continueShoppingButtonXpath = "//span[@title=\"Continue shopping\"]";
 
-    By TShirt = By.xpath(tshirtXpath);
-    By AddTShirtButton = By.xpath(addToCardButtonXpath);
-    By continueShoppingButton = By.xpath(continueShoppingButtonXpath);
-
-    public TShirtsPage(WebDriver driver) {
-        this.driver = driver;
-    }
+    SelenideElement tshirt = Selenide.$x("//img[@title=\"Faded Short Sleeve T-shirts\"]");
+    SelenideElement addToCardButton = Selenide.$x("//a[@data-id-product=\"1\"][@title=\"Add to cart\"]");
+    SelenideElement continueShoppingButton = Selenide.$x("//span[@title=\"Continue shopping\"]");
 
     public void addTShirtToCart() {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        Actions actions = new Actions(driver);
-        WebElement btn = driver.findElement(TShirt);
-        actions.moveToElement(btn);
-        actions.perform();
-        driver.findElement(AddTShirtButton).click();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(continueShoppingButton).click();
+        tshirt.shouldBe(Condition.visible).scrollTo().hover();
+        addToCardButton.shouldBe(Condition.visible).click();
+        continueShoppingButton.shouldBe(Condition.visible).click();
     }
 
 }

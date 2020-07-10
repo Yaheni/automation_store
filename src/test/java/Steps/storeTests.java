@@ -1,5 +1,4 @@
 package Steps;
-
 import PageObject.DressesPage;
 import PageObject.MainPage;
 import PageObject.TShirtsPage;
@@ -9,16 +8,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class storeTests extends SetupTests {
+public class storeTests{
 
-    MainPage mainPage = new MainPage(driver);
-    WomenPage womenPage = new WomenPage(driver);
-    DressesPage dressesPage = new DressesPage(driver);
-    TShirtsPage tShirtsPage = new TShirtsPage(driver);
+    MainPage mainPage = new MainPage();
+    WomenPage womenPage = new WomenPage();
+    DressesPage dressesPage = new DressesPage();
+    TShirtsPage tShirtsPage = new TShirtsPage();
+
 
     @Given("^user entered in the \"Women\" category$")
     public void userEnteredInTheWomenCategory() {
-        mainPage.visit();
         mainPage.goToWomenCategory();
     }
 
@@ -48,7 +47,7 @@ public class storeTests extends SetupTests {
     @Then("^dress is added to the cart$")
     public void dressIsAddedToTheCart() {
         mainPage.openCart();
-        mainPage.checkSecondItemInCart("Printed Dress");
+        mainPage.checkSecondItemInCart("Printed Dr...");
     }
 
     @When("^user entered in the \"TShirts\" category$")

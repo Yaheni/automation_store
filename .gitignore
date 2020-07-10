@@ -12,3 +12,4 @@ buildNumber.properties
 /main/resources/jar_files
 *.iml
 /.idea
+/build
