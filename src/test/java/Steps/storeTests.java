@@ -6,6 +6,7 @@ import PageObject.WomenPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Attachment;
 
 
 public class storeTests{
@@ -16,14 +17,22 @@ public class storeTests{
     TShirtsPage tShirtsPage = new TShirtsPage();
 
 
+    @Attachment("My cool attachment")
+    private byte[] createAttachment() {
+        String content = "attachmentContent";
+        return content.getBytes();
+    }
+
     @Given("^user entered in the \"Women\" category$")
     public void userEnteredInTheWomenCategory() {
         mainPage.goToWomenCategory();
+        createAttachment();
     }
 
     @When("^user clicks adding blouse to cart$")
     public void userClicksAddingBlouseToCart() {
         womenPage.addBlouseToCard();
+        createAttachment();
     }
 
     @Then("^user entered in the \"Dresses\" category$")
