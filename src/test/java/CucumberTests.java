@@ -1,10 +1,12 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.Cucumber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import io.qameta.allure.selenide.AllureSelenide;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -19,7 +21,9 @@ public class CucumberTests {
     public static void setUp() {
         Configuration.startMaximized = true;
         Configuration.timeout = 7000;
+
     }
+
 
     @AfterClass
     public static void shutDown() {
