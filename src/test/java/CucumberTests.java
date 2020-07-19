@@ -19,14 +19,15 @@ public class CucumberTests {
 
     @BeforeClass
     public static void setUp() {
+
         Configuration.remote="http://localhost:4444/wd/hub/";
         Configuration.browser = "chrome";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         Configuration.timeout = 7000;
-
     }
 
     @AfterClass
