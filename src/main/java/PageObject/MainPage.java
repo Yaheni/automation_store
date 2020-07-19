@@ -36,7 +36,6 @@ public class MainPage {
     public void goToWomenCategory() throws IOException {
         Selenide.open(baseURL);
         WomenButton.click();
-        getBytes("picture.jpg");
     }
 
     public void goToDressesCategory(){
@@ -77,7 +76,7 @@ public class MainPage {
 
     public void deleteItemFromCart() throws IOException {
         DeleteButton.click();
-        getBytes("picture.jpg");
+        getBytes("src/picture.jpg");
     }
 
     public void checkDeletedItem() {
