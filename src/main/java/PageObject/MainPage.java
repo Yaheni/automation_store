@@ -3,12 +3,21 @@ package PageObject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Attachment;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class MainPage {
 
     static String baseURL = "http://automationpractice.com/index.php";
+
+    @Attachment
+    public static byte[] getBytes(String resourceName) throws IOException {
+        return Files.readAllBytes(Paths.get("src/main/resources", resourceName));
+    }
 
     private SelenideElement WomenButton = Selenide.$x("//li//a[@title=\"Women\"]");
     private SelenideElement DressesButton = Selenide.$x("//*[@id=\"block_top_menu\"]/ul/li[2]/a");
@@ -24,9 +33,10 @@ public class MainPage {
     private SelenideElement FoundedThing = Selenide.$x("//div[@id=\"center_column\"]//a[@class=\"product-name\"]");
     private SelenideElement AmountCartProducts = Selenide.$x("//a//span[@class=\"ajax_cart_quantity\"]");
 
-    public void goToWomenCategory(){
+    public void goToWomenCategory() throws IOException {
         Selenide.open(baseURL);
         WomenButton.click();
+        getBytes("picture.jpg");
     }
 
     public void goToDressesCategory(){
@@ -50,6 +60,7 @@ public class MainPage {
         FirstThing.shouldHave(Condition.text(firstThingName));
         SecondThing.shouldHave(Condition.text(secondThingName));
         ThirdThing.shouldHave(Condition.text(thirdThingName));
+
     }
 
     public void checkFirstItemInCart(String itemName) {
@@ -64,8 +75,9 @@ public class MainPage {
         ThirdThing.shouldHave(Condition.attribute("title", itemName));
     }
 
-    public void deleteItemFromCart() {
+    public void deleteItemFromCart() throws IOException {
         DeleteButton.click();
+        getBytes("picture.jpg");
     }
 
     public void checkDeletedItem() {
