@@ -8,7 +8,7 @@ public class MainPage {
 
     static String baseURL = "http://automationpractice.com/index.php";
 
-    private SelenideElement WomenButton = Selenide.$x("//li//a[@title=\"Women1\"]");
+    private SelenideElement WomenButton = Selenide.$x("//li//a[@title=\"Women\"]");
     private SelenideElement DressesButton = Selenide.$x("//*[@id=\"block_top_menu\"]/ul/li[2]/a");
     private SelenideElement TshirtsButton = Selenide.$x("//li[3]//a[@title=\"T-shirts\"]");
     private SelenideElement CartButton = Selenide.$x("//a[@title=\"View my shopping cart\"]");
