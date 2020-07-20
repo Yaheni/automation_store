@@ -20,14 +20,8 @@ public class storeTests{
 
 
     @Given("^user entered in the \"Women\" category$")
-    public void userEnteredInTheWomenCategory () throws Throwable {
-        try {
+    public void userEnteredInTheWomenCategory (){
             mainPage.goToWomenCategory();
-        } catch (Exception e) {
-            this.createAttachment(Arrays.toString(e.getStackTrace()));
-            throw e;
-        }
-
 
     }
 
@@ -109,11 +103,6 @@ public class storeTests{
         mainPage.checkFoundedProduct("Blouse");
     }
 
-    @Attachment()
-    private byte[] createAttachment(String att) {
-        String content = att;
-        return content.getBytes();
-    }
 }
 
 
