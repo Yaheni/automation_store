@@ -6,8 +6,9 @@ import PageObject.WomenPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.qameta.allure.Step;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
+import java.util.Arrays;
 
 public class storeTests{
 
@@ -19,11 +20,16 @@ public class storeTests{
 
 
     @Given("^user entered in the \"Women\" category$")
-    public void userEnteredInTheWomenCategory() {
-        mainPage.goToWomenCategory();
+    public void userEnteredInTheWomenCategory () throws Throwable {
+        try {
+            mainPage.goToWomenCategory();
+        } catch (Exception e) {
+            this.createAttachment(Arrays.toString(e.getStackTrace()));
+            throw e;
+        }
+
 
     }
-
 
     @When("^user clicks adding blouse to cart$")
     public void userClicksAddingBlouseToCart() {
@@ -102,7 +108,14 @@ public class storeTests{
     public void deletedProductIsFoundedInTheStore() {
         mainPage.checkFoundedProduct("Blouse");
     }
+
+    @Attachment()
+    private byte[] createAttachment(String att) {
+        String content = att;
+        return content.getBytes();
+    }
 }
+
 
 
 
