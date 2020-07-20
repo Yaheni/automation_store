@@ -12,7 +12,7 @@ public class WomenPage {
     public void addBlouseToCard() {
         Blouse.shouldBe(Condition.visible).scrollTo().hover();
         AddBlouseButton.shouldBe(Condition.visible).click();
-        ContinueShoppingButton.shouldBe(Condition.visible).click();
+        ContinueShoppingButton.click();
     }
 
 }
