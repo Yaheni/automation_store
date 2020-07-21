@@ -1,20 +1,21 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.Cucumber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import io.qameta.allure.selenide.AllureSelenide;
+
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        plugin = {"io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"},
         features = "src/test/java/Features",
         glue = {"Steps"},
         tags = "@store",
         snippets = CucumberOptions.SnippetType.CAMELCASE
+
 )
 
 
@@ -31,7 +32,6 @@ public class CucumberTests {
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         Configuration.timeout = 7000;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
     @AfterClass

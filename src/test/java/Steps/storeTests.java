@@ -6,9 +6,6 @@ import PageObject.WomenPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ru.yandex.qatools.allure.annotations.Attachment;
-
-import java.util.Arrays;
 
 public class storeTests{
 
